@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monika Kushwah - MERN Stack Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #3b82f6;
+            --accent-color: #60a5fa;
+            --text-color: #1f2937;
+            --light-bg: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .contact-info a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .experience-item {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: var(--light-bg);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .experience-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .date {
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .date i {
+            color: var(--accent-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            background: var(--light-bg);
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: var(--light-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MONIKA KUSHWAH</h1>
+        <p style="font-size: 1.2rem; margin: 1rem 0;">MERN Stack Developer | React.js Developer | Node.js Developer | Full Stack Developer</p>
+        <div class="contact-info">
+            <span><i class="fas fa-map-marker-alt"></i> Gwalior, Madhya Pradesh</span>
+            <a href="tel:+919329473133"><i class="fas fa-phone"></i> +91 9329473133</a>
+            <a href="mailto:monikakushwah53457@gmail.com"><i class="fas fa-envelope"></i> monikakushwah53457@gmail.com</a>
+            <a href="https://www.linkedin.com/in/monikakushwah53457/" target="_blank"><i class="fab fa-linkedin "></i> LinkedIn Profile</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Professional Summary</h2>
+            <p>I am a Full-Stack JavaScript Developer with expertise in Node.js, React.js, and MongoDB. Proficient in creating responsive and user-friendly interfaces. Adept at version control using Git and collaborative development on platforms like GitHub, I am dedicated to continuous learning and staying updated with industry trends.</p>
+        </section>
+
+        <section>
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <h3><i class="fas fa-briefcase"></i> Intern Javascript Developer - HealTether Health</h3>
+                <p class="date"><i class="far fa-calendar-alt"></i> August 2024 - Present | Tamil Nadu</p>
+                <ul>
+                    <li>Collaborating in Full-Stack Development: Working closely with both front-end and back-end teams to fix bugs, optimize application performance, and improve code quality.</li>
+                    <li>Building Web Application Features: Contributing to the development of scalable and user-friendly features within a responsive web application</li>
+                    <li>Learning from Industry Professionals: Engaging with senior developers to gain insights on advanced JavaScript practices and software development methodologies</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3><i class="fas fa-briefcase"></i> MERN Stack Developer - ITS Gwalior</h3>
+                <p class="date"><i class="far fa-calendar-alt"></i> May 2024 - Present | Madhya Pradesh, Gwalior</p>
+                <ul>
+                    <li>Contributing to the development of client websites, incorporating modern design principles, responsive layouts and performance optimization techniques.</li>
+                    <li>Participating in client-based projects, collaborating with team members to deliver high-quality solutions using Agile development methodologies.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3><i class="fas fa-briefcase"></i> Internship (MERN Stack Developer) - Kishan Enterprises</h3>
+                <p class="date"><i class="far fa-calendar-alt"></i> December 2023 - May 2024 | Gwalior, M.P</p>
+                <ul>
+                    <li>Completed intensive web development training + Internship program focused on frontend and backend technologies</li>
+                    <li>Acquired skills in HTML, CSS, JavaScript, React.js, Node.js, MongoDB, ExpressJs, and API development</li>
+                    <li>Learned about API testing and validation using tools like Postman</li>
+                    <li>Gained hands-on experience in building, testing, and integrating APIs using async/await and promises</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+            <div class="project-card">
+                <h3><i class="fas fa-project-diagram"></i> Voice Broadcast Application</h3>
+                <p><strong>Role:</strong> React Developer</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">JWT</span>
+                </div>
+                <p>This voice broadcast website allows users to broadcast messages and audio to hundreds or thousands of people at once.</p>
+                <a href="https://voiceblaster.co.in/" target="_blank" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> View Project
+                </a>
+            </div>
+
+            <div class="project-card">
+                <h3><i class="fas fa-project-diagram"></i> Finance Software</h3>
+                <p><strong>Role:</strong> MERN Stack Developer</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">JWT</span>
+                </div>
+                <p>A platform for managing data related to loans, RTO, and insurance. It also includes features for expense management and employee salary creation.</p>
+                <a href="https://royalfinancialservices.in/" target="_blank" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> View Project
+                </a>
+            </div>
+
+            <div class="project-card">
+                <h3><i class="fas fa-project-diagram"></i> Skincare Website</h3>
+                <p><strong>Role:</strong> MERN Stack Developer</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">JWT</span>
+                </div>
+                <p>An e-commerce-like platform with an admin panel to manage all dynamic content of the website. This includes product management, categories, subcategories, and order handling.</p>
+                <a href="https://skinsciencelaboratory.com/" target="_blank" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> View Project
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="experience-item">
+                <h3><i class="fas fa-graduation-cap"></i> B.Tech</h3>
+                <p>Pursuing at IPS College of Technology and Management, Gwalior, Madhya Pradesh</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Key Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4><i class="fas fa-code"></i> Languages</h4>
+                    <p>Javascript, DSA, Problem-solving</p>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-laptop-code"></i> Front-end Development</h4>
+                    <p>HTML, CSS, Tailwind, JavaScript, ReactJs, Bootstrap, Redux</p>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-server"></i> Back-end Development</h4>
+                    <p>NodeJs, Swagger, MongoDB, ExpressJs</p>
+                    </div>
+                </div>
+                </section>
+
+                <section>
+                    <h2>Achievements</h2>
+                    <div class="experience-item">
+                        <ul>
+                            <li>
+                                Successfully developed and deployed scalable applications such as 
+                                <strong>Voice Broadcast Platform</strong>, <strong>Finance Software</strong>, and 
+                                <strong>Skincare E-commerce Website</strong>, boosting user engagement by 20%.
+                            </li>
+                            <li>
+                                Collaborated with cross-functional teams at <strong>HealTether Health</strong> to debug 
+                                and optimize web applications, resulting in improved performance and user experience.
+                            </li>
+                            <li>
+                                Played a key role in implementing user-friendly and scalable features during an 
+                                internship at <strong>Kishan Enterprises</strong>, gaining hands-on experience with 
+                                RESTful APIs, testing, and database modeling.
+                            </li>
+                            <li>
+                                Recognized for consistently delivering high-quality solutions under tight deadlines, 
+                                contributing to seamless project deliveries and client satisfaction.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                
+
+    </div>
+
+    </body>
+    </html>
+
+
